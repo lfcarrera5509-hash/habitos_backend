@@ -2,9 +2,28 @@ const mongoose = require("mongoose");
 
 const habitSchema = new mongoose.Schema(
   {
-    userId: { type: String, required: true },
-    name: { type: String, required: true, trim: true },
-    isActive: { type: Boolean, default: true }
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    streakCount: {
+      type: Number,
+      default: 0,
+    },
+    lastCompletedDate: {
+      type: Date,
+      default: null,
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true }
 );
